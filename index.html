@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Clock - By Sohom</title>
+<style>
+  body{
+    display:flex;justify-content:center;align-items:center;min-height:100vh;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    font-family:'Poppins', sans-serif; margin:0;
+  }
+  .clock-box{
+    background:rgba(255,255,255,0.1);
+    padding:40px 60px;border-radius:20px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.5);
+    text-align:center;backdrop-filter:blur(10px);
+  }
+  h2{color:#fff;margin-bottom:20px;font-size:24px}
+  #clock{
+    font-size:60px;font-weight:bold;color:#00FFD1;
+    letter-spacing:3px;
+  }
+  #date{
+    font-size:18px;color:#ddd;margin-top:10px;
+  }
+</style>
+</head>
+<body>
+<div class="clock-box">
+  <h2>🔥 Live Digital Clock</h2>
+  <div id="clock">00:00:00</div>
+  <div id="date">Loading date...</div>
+</div>
+
+<script>
+function updateClock(){
+  let now = new Date();
+  
+  // Time
+  let h = String(now.getHours()).padStart(2, '0');
+  let m = String(now.getMinutes()).padStart(2, '0');
+  let s = String(now.getSeconds()).padStart(2, '0');
+  
+  document.getElementById("clock").innerHTML = `${h}:${m}:${s}`;
+  
+  // Date
+  let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  let date = now.toLocaleDateString("en-US", options);
+  document.getElementById("date").innerHTML = date;
+}
+
+// Prottek 1 second por por function ta cholbe
+setInterval(updateClock, 1000);
+
+// Page load howar sathe sathe 1 bar chalanor jonno
+updateClock();
+</script>
+</body>
+  </html>
